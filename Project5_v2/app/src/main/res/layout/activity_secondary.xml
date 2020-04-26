@@ -26,7 +26,6 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_anchorGravity="center"
         android:text="@string/advice_title"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="@+id/appBarLayout"
