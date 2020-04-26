@@ -20,4 +20,7 @@
     <string name="calcBMI">Calculate BMI</string>
     <string name="advice">Get Advice</string>
     <string name="bmiCalc">BMI Calculator</string>
+    <string name="advice_title">Advice based on BMI</string>
+    <string name="normal">Normal</string>
+    <string name="advice_image">advice image</string>
 </resources>
