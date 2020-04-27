@@ -6,34 +6,6 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/nav_graph" >
-
-    </androidx.fragment.app.FragmentContainerView>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_fragment2"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:navGraph="@navigation/nav_graph" />
-
     <TextView
         android:id="@+id/textViewW"
         android:layout_width="wrap_content"
@@ -42,8 +14,8 @@
         android:layout_marginTop="64dp"
         android:text="@string/weight"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintStart_toStartOf="@+id/nav_host_fragment"
-        app:layout_constraintTop_toTopOf="@+id/nav_host_fragment" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/bmiOut"
@@ -70,11 +42,10 @@
         android:id="@+id/textViewBMI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
         android:layout_marginTop="32dp"
         android:text="@string/bmi"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintStart_toStartOf="@+id/nav_host_fragment"
+        app:layout_constraintStart_toStartOf="@+id/textViewH"
         app:layout_constraintTop_toBottomOf="@+id/textViewH" />
 
     <EditText
@@ -83,13 +54,13 @@
         android:layout_height="36dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="44dp"
+        android:autofillHints="weight"
         android:ems="10"
         android:hint="@string/inWeight"
         android:inputType="numberDecimal"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nav_host_fragment"
-        android:autofillHints="weight" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/enterHeight"
@@ -109,9 +80,9 @@
         android:id="@+id/radioGroup"
         android:layout_width="410dp"
         android:layout_height="90dp"
-        android:orientation="horizontal"
         android:checkedButton="@+id/lbsBtn"
-        app:layout_constraintStart_toStartOf="@+id/nav_host_fragment"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewBMI">
 
         <RadioButton
@@ -139,7 +110,7 @@
         android:layout_marginStart="67dp"
         android:layout_marginTop="64dp"
         android:text="@string/calcBMI"
-        app:layout_constraintStart_toStartOf="@+id/nav_host_fragment"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <Button

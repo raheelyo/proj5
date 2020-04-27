@@ -20,19 +20,7 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText enterWeight = findViewById(R.id.enterWeight);
-    EditText enterHeight = findViewById(R.id.enterHeight);
-    RadioGroup rgroup = findViewById(R.id.radioGroup);
-    RadioButton checked;
-    RadioButton kgBtn = findViewById(R.id.kgBtn);
-    RadioButton lbsBtn = findViewById(R.id.lbsBtn);
-    Button calcBMI = findViewById(R.id.calcBMI);
-    TextView bmiOut = findViewById(R.id.bmiOut);
-    final int lbsConst = 703;
-    final String entH = "Please enter height.";
-    final String entW = "Please enter weight.";
-    final String unitCheck = "Kg/m";
-    private static DecimalFormat df = new DecimalFormat("0.00");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +29,20 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        final EditText enterWeight = findViewById(R.id.enterWeight);
+        final EditText enterHeight = findViewById(R.id.enterHeight);
+        final RadioGroup rgroup = findViewById(R.id.radioGroup);
+        final RadioButton[] checked = new RadioButton[1];
+        final RadioButton kgBtn = findViewById(R.id.kgBtn);
+        final RadioButton lbsBtn = findViewById(R.id.lbsBtn);
+        final Button calcBMI = findViewById(R.id.calcBMI);
+        final TextView bmiOut = findViewById(R.id.bmiOut);
+        final int lbsConst = 703;
+        final String entH = "Please enter height.";
+        final String entW = "Please enter weight.";
+        final String unitCheck = "Kg/m";
+        final DecimalFormat df = new DecimalFormat("0.00");
+
         View.OnClickListener optionOnClickListener
                 = new View.OnClickListener() {
 
@@ -48,12 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
                 // to go further with check state you can manually check each radiobutton and find which one is checked.
                 if(kgBtn.isChecked()) {
-                    enterWeight.setHint((CharSequence)"enter weight, kgs");
-                    enterHeight.setHint((CharSequence)"enter height, m");
+                    enterWeight.setHint("enter weight, kgs");
+                    enterHeight.setHint("enter height, m");
                 }
                 if(lbsBtn.isChecked()) {
-                    enterWeight.setHint((CharSequence)"enter weight, lbs");
-                    enterHeight.setHint((CharSequence)"enter height, in");
+                    enterWeight.setHint("enter weight, lbs");
+                    enterHeight.setHint("enter height, in");
                 }
             }
         };
@@ -64,8 +66,9 @@ public class MainActivity extends AppCompatActivity {
         calcBMI.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 int selectedID = rgroup.getCheckedRadioButtonId();
-                checked = findViewById(selectedID);
-                String units = checked.getText().toString();
+                checked[0] = findViewById(selectedID);
+                final RadioButton finalChecked = checked[0];
+                String units = finalChecked.getText().toString();
                 String weight = enterWeight.getText().toString();
                 String height = enterHeight.getText().toString();
                 if(weight.equals("")){
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                         res = Float.parseFloat(weight)*lbsConst/denom;
                     }
                     String bmi = df.format(res);
-                    bmiOut.setText((CharSequence) bmi);
+                    bmiOut.setText(bmi);
                 }
             }
         });
