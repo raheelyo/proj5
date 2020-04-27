@@ -16,9 +16,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/nav_graph" >
-
-    </androidx.fragment.app.FragmentContainerView>
+        app:navGraph="@navigation/nav_graph" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment2"
@@ -44,16 +42,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="@+id/nav_host_fragment"
         app:layout_constraintTop_toTopOf="@+id/nav_host_fragment" />
-
-    <TextView
-        android:id="@+id/bmiOut"
-        android:layout_width="96dp"
-        android:layout_height="wrap_content"
-        android:background="#FFEB3B"
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
-        app:layout_constraintStart_toStartOf="@+id/enterHeight" />
 
     <TextView
         android:id="@+id/textViewH"
@@ -105,32 +93,25 @@
         app:layout_constraintTop_toBottomOf="@+id/enterWeight"
         android:autofillHints="height" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="410dp"
-        android:layout_height="90dp"
-        android:orientation="horizontal"
-        android:checkedButton="@+id/lbsBtn"
-        app:layout_constraintStart_toStartOf="@+id/nav_host_fragment"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBMI">
+    <RadioButton
+        android:id="@+id/lbsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="68dp"
+        android:text="@string/rb1text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBMI" />
 
-        <RadioButton
-            android:id="@+id/lbsBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="68dp"
-            android:text="@string/rb1text" />
-
-        <RadioButton
-            android:id="@+id/kgBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="160dp"
-            android:layout_marginTop="68dp"
-            android:text="@string/rb2text"
-            app:layout_constraintEnd_toEndOf="@+id/lbsBtn" />
-    </RadioGroup>
+    <RadioButton
+        android:id="@+id/kgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="28dp"
+        android:text="@string/rb2text"
+        app:layout_constraintEnd_toEndOf="@+id/enterHeight"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBMI" />
 
     <Button
         android:id="@+id/calcBMI"
@@ -140,7 +121,7 @@
         android:layout_marginTop="64dp"
         android:text="@string/calcBMI"
         app:layout_constraintStart_toStartOf="@+id/nav_host_fragment"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/lbsBtn" />
 
     <Button
         android:id="@+id/getAdvice"
