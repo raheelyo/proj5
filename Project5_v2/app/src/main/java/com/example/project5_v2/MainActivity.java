@@ -11,28 +11,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
-import java.text.DecimalFormat;
-
 
 public class MainActivity extends AppCompatActivity {
-
-    EditText enterWeight = findViewById(R.id.enterWeight);
-    EditText enterHeight = findViewById(R.id.enterHeight);
-    RadioGroup rgroup = findViewById(R.id.radioGroup);
-    Button calcBMI = findViewById(R.id.calcBMI);
-    RadioButton checked;
-    TextView bmiOut = findViewById(R.id.bmiOut);
-    final int lbsConst = 703;
-    final String entH = "Please enter height.";
-    final String entW = "Please enter weight.";
-    final String unitCheck = "Kg/m";
-    private static DecimalFormat df = new DecimalFormat("0.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,32 +20,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        calcBMI.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                int selectedID = rgroup.getCheckedRadioButtonId();
-                checked = findViewById(selectedID);
-                String units = checked.getText().toString();
-                String weight = enterWeight.getText().toString();
-                String height = enterHeight.getText().toString();
-                if(weight.equals("")){
-                    Toast message = Toast.makeText(getApplicationContext(),entH,Toast.LENGTH_LONG);
-                    message.show();
-                }else if(height.equals("")){
-                    Toast message = Toast.makeText(getApplicationContext(),entW,Toast.LENGTH_SHORT);
-                    message.show();
-                }else{
-                    float res;
-                    float denom = Float.parseFloat(height)*Float.parseFloat(height);
-                    if(units.equals("Kg/m")){
-                        res = Float.parseFloat(weight)/denom;
-                    }else{
-                        res = Float.parseFloat(weight)*lbsConst/denom;
-                    }
-                    String bmi = df.format(res);
-                    bmiOut.setText((CharSequence) bmi);
-                }
+        /*
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
+        */
+
     }
 
     @Override
