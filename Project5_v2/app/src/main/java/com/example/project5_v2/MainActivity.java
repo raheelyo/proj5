@@ -2,8 +2,6 @@ package com.example.project5_v2;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -25,8 +23,10 @@ public class MainActivity extends AppCompatActivity {
     EditText enterWeight = findViewById(R.id.enterWeight);
     EditText enterHeight = findViewById(R.id.enterHeight);
     RadioGroup rgroup = findViewById(R.id.radioGroup);
-    Button calcBMI = findViewById(R.id.calcBMI);
     RadioButton checked;
+    RadioButton kgBtn = findViewById(R.id.kgBtn);
+    RadioButton lbsBtn = findViewById(R.id.lbsBtn);
+    Button calcBMI = findViewById(R.id.calcBMI);
     TextView bmiOut = findViewById(R.id.bmiOut);
     final int lbsConst = 703;
     final String entH = "Please enter height.";
@@ -40,6 +40,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        View.OnClickListener optionOnClickListener
+                = new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                // to go further with check state you can manually check each radiobutton and find which one is checked.
+                if(kgBtn.isChecked()) {
+                    enterWeight.setHint((CharSequence)"enter weight, kgs");
+                    enterHeight.setHint((CharSequence)"enter height, m");
+                }
+                if(lbsBtn.isChecked()) {
+                    enterWeight.setHint((CharSequence)"enter weight, lbs");
+                    enterHeight.setHint((CharSequence)"enter height, in");
+                }
+            }
+        };
+
+        kgBtn.setOnClickListener(optionOnClickListener);
+        lbsBtn.setOnClickListener(optionOnClickListener);
+
         calcBMI.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 int selectedID = rgroup.getCheckedRadioButtonId();
